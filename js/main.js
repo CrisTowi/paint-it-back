@@ -1,5 +1,18 @@
-var fn = (str) => {
-	console.log(str)
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+import { Router, Route, Link, browserHistory } from 'react-router'
+
+import Index from './index'
+
+class RouterComponent extends React.Component {
+	render() {
+		return (
+			<Router history={browserHistory}>
+				<Route path='/' component={Index} />
+			</Router>
+		)
+	}
 }
 
-fn('Muy bien')
+ReactDOM.render(<RouterComponent />, document.getElementById('container'))
