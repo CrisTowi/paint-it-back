@@ -7,6 +7,7 @@ import Index from './index'
 
 class RouterComponent extends React.Component {
 	render() {
+    console.log('Hola amigos')
 		return (
 			<Router history={browserHistory}>
 				<Route path='/' component={Index} />

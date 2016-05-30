@@ -2,10 +2,20 @@ var path 		= require('path')
 var webpack = require('webpack')
 
 module.exports = {
-	entry: './js/main.js',
-	output: {
-		path: __dirname, filename: 'bundle.js'
+	entry: {
+		main: './js/main.js',
+		vendor: ['jquery', 'bootstrap']
 	},
+	output: {
+		filename: '[name].js',
+	},
+	plugins: [
+		new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', Infinity),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery'
+		})
+	],
 	module: {
 		loaders: [
 			{
