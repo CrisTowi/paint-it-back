@@ -1,17 +1,33 @@
+// React
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+// React Router
 import { Router, Route, Link, browserHistory } from 'react-router'
 
-import Index from './index'
+// Redux
+import { createStore } 	from 'redux'
+import { Provider } 		from 'react-redux'
+
+// Views
+import Index 	from './index'
+import Layout from './layout'
+import Board 	from './board'
+
+import reducers from './reducers/index'
+
+const store = createStore(reducers)
 
 class RouterComponent extends React.Component {
 	render() {
-    console.log('Hola amigos')
 		return (
-			<Router history={browserHistory}>
-				<Route path='/' component={Index} />
-			</Router>
+			<Provider store={store}>
+				<Router history={browserHistory}>
+					<Route component={Layout}>
+						<Route path='/' component={Index} />
+					</Route>
+				</Router>
+			</Provider>
 		)
 	}
 }
